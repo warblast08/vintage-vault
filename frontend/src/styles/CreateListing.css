@@ -1,0 +1,86 @@
+.create-listing-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%; 
+  background-color: #fdfcf0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.listing-card {
+  background-color: #ffffff;
+  padding: 48px 40px;
+  border-radius: 12px;
+  border: 1px solid #dadce0;
+  width: 100%;
+  max-width: 550px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.listing-title {
+  font-size: 28px;
+  font-weight: 400;
+  color: #202124;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.listing-subtitle {
+  font-size: 14px;
+  color: #5f6368;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-field, .textarea-field, .select-field {
+  width: 100%;
+  padding: 13px 15px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #dadce0;
+  outline: none;
+  background-color: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.textarea-field {
+  min-height: 120px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.input-field:focus, .textarea-field:focus, .select-field:focus {
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 2px rgba(26,115,232,0.2);
+}
+
+.submit-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #1a1a1a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  margin-top: 10px;
+}
+
+.submit-button:hover {
+  background-color: #333;
+}
+
+.submit-button:active {
+  transform: scale(0.98);
+}

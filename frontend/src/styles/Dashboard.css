@@ -1,0 +1,141 @@
+/* Dashboard.css */
+
+.dashboard-wrapper {
+  padding: 60px 80px;
+  background-color: #fdfcf0; /* Consistent pastel cream */
+  min-height: 100%; /* Prevents unnecessary scrolling */
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #202124;
+  box-sizing: border-box;
+}
+
+.dashboard-header {
+  margin-bottom: 40px;
+}
+
+.welcome-text {
+  font-size: 28px;
+  font-weight: 300;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.welcome-text span {
+  font-weight: 600;
+  margin-right: 8px; /* The fix for your comma spacing */
+}
+
+.badge-container {
+  display: inline-block;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+
+.activity-section {
+  margin-top: 20px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #5f6368;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.dashboard-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #dadce0;
+  padding: 24px;
+  box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f1f3f4;
+  padding-bottom: 15px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.add-button {
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-button:hover {
+  background-color: #1765cc;
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f8f9fa;
+}
+
+.item-main-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #202124;
+}
+
+.item-subtext {
+  font-size: 13px;
+  color: #70757a;
+}
+
+.item-price {
+  font-weight: 600;
+  font-size: 15px;
+  color: #1e8e3e;
+}
+
+.empty-text {
+  color: #70757a;
+  font-size: 14px;
+  font-style: italic;
+}
