@@ -3,7 +3,6 @@ const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-// User Registration [cite: 48, 52]
 router.post('/register', async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -18,7 +17,6 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// Login Route in backend/routes/auth.js
 router.post('/login', async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
@@ -29,13 +27,12 @@ router.post('/login', async (req, res) => {
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
 
-    // Send the verification status along with the token
     res.status(200).json({ 
       token, 
       user: { 
           id: user._id, 
           email: user.email,
-          isVerifiedSeller: user.isVerifiedSeller // Pass the status here 
+          isVerifiedSeller: user.isVerifiedSeller
       } 
     });
     } catch (err) {

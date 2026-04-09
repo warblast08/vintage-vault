@@ -2,7 +2,6 @@ const router = require('express').Router();
 const Item = require('../models/item');
 const jwt = require('jsonwebtoken');
 
-// POST: Create a new listing
 router.post('/create', async (req, res) => {
     try {
         const { title, description, price, category, sellerId, sellerEmail } = req.body;
@@ -23,7 +22,6 @@ router.post('/create', async (req, res) => {
     }
 });
 
-// GET: Fetch all items (for the marketplace)
 router.get('/all', async (req, res) => {
     try {
         const items = await Item.find().populate('sellerId', 'isVerifiedSeller');;
@@ -33,7 +31,6 @@ router.get('/all', async (req, res) => {
     }
 });
 
-// GET: Fetch items created by a specific seller
 router.get('/user-listings/:userId', async (req, res) => {
     try {
         const userItems = await Item.find({ sellerId: req.params.userId });

@@ -15,11 +15,11 @@ const ItemSchema = new mongoose.Schema({
   },
   category: { 
     type: String, 
-    required: true // e.g., "Shirts", "Jackets", "Pants"
+    required: true
   },
   imageUrl: { 
     type: String, 
-    default: "https://via.placeholder.com/150" // Placeholder until we add image uploads
+    default: "https://via.placeholder.com/150"
   },
   sellerId: { 
     type: mongoose.Schema.Types.ObjectId, 
