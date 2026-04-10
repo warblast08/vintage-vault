@@ -4,6 +4,7 @@ import Dashboard from './pages/Dashboard';
 import CreateListing from './pages/CreateListing';
 import Marketplace from './pages/Marketplace';
 import Navbar from './components/Navbar';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -12,10 +13,34 @@ function App() {
         <Navbar />
         <div style={{ flex: 1, overflowY: 'auto' }}>
           <Routes>
+            {/* The ONLY public page */}
             <Route path="/" element={<Auth />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/create-listing" element={<CreateListing />} />
-            <Route path="/marketplace" element={<Marketplace />} />
+
+            {/* All other pages are now locked behind ProtectedRoute */}
+            <Route 
+              path="/dashboard" 
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/create-listing" 
+              element={
+                <ProtectedRoute>
+                  <CreateListing />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/marketplace" 
+              element={
+                <ProtectedRoute>
+                  <Marketplace />
+                </ProtectedRoute>
+              } 
+            />
           </Routes>
         </div>
       </div>

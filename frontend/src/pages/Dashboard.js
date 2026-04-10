@@ -5,22 +5,28 @@ import axios from 'axios';
 import '../styles/Dashboard.css';
 
 const Dashboard = () => {
+  // State to store user profile info, order history, and personal listings
   const [user, setUser] = useState({ email: '', isVerified: false });
   const [history, setHistory] = useState([]);
   const [myListings, setMyListings] = useState([]);
 
+  // useEffect hook to initialize user data and fetch activity from the backend
   useEffect(() => {
+    // Retrieve session data stored in local storage during login
     const email = localStorage.getItem('userEmail');
     const isVerified = localStorage.getItem('isVerified') === 'true';
     const userId = localStorage.getItem('userId');
     
     setUser({ email, isVerified });
 
+    // Asynchronous function to gather all user-specific data from the API
     const fetchData = async () => {
       try {
+        // Fetch transaction history (both buys and sells) for the current user
         const historyRes = await axios.get(`http://localhost:5000/api/transactions/history/${userId}`);
         setHistory(historyRes.data);
 
+        // Fetch active listings created by the current user
         const listingsRes = await axios.get(`http://localhost:5000/api/items/user-listings/${userId}`);
         setMyListings(listingsRes.data);
       } catch (err) {
@@ -28,6 +34,7 @@ const Dashboard = () => {
       }
     };
 
+    // Only attempt to fetch data if a valid userId is present
     if (userId) fetchData();
   }, []);
 
@@ -35,7 +42,8 @@ const Dashboard = () => {
     <div className="dashboard-wrapper">
       <header className="dashboard-header">
         <h1 className="welcome-text">
-          Welcome, <span>{user.email}</span>
+          Welcome, {" "} <span>{user.email}</span>
+          {/* Display the trust badge if the user is a verified seller */}
           <div className="badge-container">
             <SellerBadge isVerified={user.isVerified} />
           </div>
@@ -46,6 +54,7 @@ const Dashboard = () => {
         <h3 className="section-title">Your Activity</h3>
         
         <div className="grid-container">
+          {/* Section for managing the user's active marketplace listings */}
           <div className="dashboard-card">
             <div className="card-header">
               <h4 className="card-title">Your Active Listings</h4>
@@ -55,6 +64,7 @@ const Dashboard = () => {
             </div>
             
             <div className="list-container">
+              {/* Dynamically render listing items */}
               {myListings.length > 0 ? (
                 myListings.map((item) => (
                   <div key={item._id} className="list-item">
@@ -71,12 +81,14 @@ const Dashboard = () => {
             </div>
           </div>
 
+          {/* Section for viewing the user's past marketplace transactions */}
           <div className="dashboard-card">
             <div className="card-header">
               <h4 className="card-title">Order History</h4>
             </div>
             
             <div className="list-container">
+              {/* Map through transaction records to display purchase dates and titles */}
               {history.length > 0 ? (
                 history.map((tx) => (
                   <div key={tx._id} className="list-item">

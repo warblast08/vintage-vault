@@ -5,15 +5,18 @@ import '../styles/Navbar.css';
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  
+  // Check if a user is logged in by verifying the presence of an auth token
   const isLoggedIn = !!localStorage.getItem('token');
 
-  // Hide Navbar on the Auth/Login page
+  // Prevent the Navbar from rendering on the login/landing page
   if (location.pathname === '/') {
     return null;
   }
 
   return (
     <nav className="navbar-container">
+      {/* Branding section that redirects to the user dashboard */}
       <div 
         onClick={() => navigate('/dashboard')} 
         className="nav-logo"
@@ -22,7 +25,7 @@ const Navbar = () => {
         Vintage Vault
       </div>
       
-      {/* Navigation Links */}
+      {/* Navigation Links: Content changes based on the user's login status */}
       <div className="nav-links">
         {isLoggedIn ? (
           <>
@@ -32,6 +35,7 @@ const Navbar = () => {
             <span onClick={() => navigate('/dashboard')} className="nav-link">
               Dashboard
             </span>
+            {/* Logout functionality: Clears local storage and redirects to login */}
             <span 
               onClick={() => { localStorage.clear(); navigate('/'); }} 
               className="logout-link"
@@ -40,6 +44,7 @@ const Navbar = () => {
             </span>
           </>
         ) : (
+          /* Show login link only if the user is currently signed out */
           <span onClick={() => navigate('/')} className="nav-link">
             Login
           </span>

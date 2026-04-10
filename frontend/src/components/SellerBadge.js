@@ -1,7 +1,9 @@
 import React from 'react';
 
+// Functional component to display a "Verified" status badge for trusted sellers
 const SellerBadge = ({ isVerified }) => {
-  // Only show the badge if the verification status is true
+  
+  // Conditional rendering: If the seller is not verified, return null to hide the badge
   if (!isVerified) return null;
 
   return (
@@ -17,6 +19,7 @@ const SellerBadge = ({ isVerified }) => {
       marginLeft: '10px',
       border: '1px solid #bbdefb'
     }}>
+      {/* SVG Checkmark icon to visually indicate a verified status */}
       <svg 
         width="14" 
         height="14" 
